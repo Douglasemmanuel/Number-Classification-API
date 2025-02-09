@@ -15,8 +15,9 @@ class NumberPropertiesView(APIView):
             properties = self.get_properties(number)
             serializer = NumberPropertiesSerializer(properties)
             return Response(serializer.data, status=status.HTTP_200_OK)
+
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"number":"alphabet","error":True}, status=status.HTTP_400_BAD_REQUEST)
 
     def get_properties(self, number):
         is_perfect = self.is_perfect_number(number)
